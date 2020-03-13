@@ -10,8 +10,34 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var musicLabel: UILabel!
+    @IBOutlet var swipeDown: UISwipeGestureRecognizer!
+    
+    var sendImage: UIImage?
+    var titleMusic = ""
+    var durationMusic = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        acceptVariable()
     }
+    
+    func acceptVariable() {
+        if let temp = sendImage {
+            coverImage.image = temp
+        }
+        musicLabel.text = "\(titleMusic) \n Music Duration : \(durationMusic) minute"
+    }
+    
+    @IBAction func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        switch sender{
+        case swipeDown:
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
+    }
+    
 
 }

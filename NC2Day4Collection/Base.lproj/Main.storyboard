@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9vp-2t-jRF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,6 +39,9 @@
                                 <state key="normal" image="ic_shuffle">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="playerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7R-ox-eVu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbu-DZ-BuF">
                                 <rect key="frame" x="357" y="734" width="37" height="54"/>
@@ -46,18 +49,33 @@
                                 <state key="normal" image="ic_audio">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="playerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aki-XB-dWn"/>
+                                    <segue destination="ccK-5j-9xi" kind="presentation" identifier="detailSegue" id="9NP-1N-sum"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Music Player" id="h3g-c6-1iA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="dCR-gX-PG7"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="dCR-gX-PG7">
+                            <connections>
+                                <segue destination="oq3-YH-39V" kind="show" id="rek-Hb-Cuf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="libraryButton" destination="Hbu-DZ-BuF" id="uvk-g5-lYO"/>
+                        <outlet property="musicCover" destination="NCs-Sp-d5Q" id="eeT-4o-e6h"/>
+                        <outlet property="playListMusic" destination="GPv-Vb-cNB" id="hxF-OB-zDt"/>
+                        <outlet property="shuffleButton" destination="3oC-Pq-wFW" id="7xE-Wo-D36"/>
+                        <outlet property="titleMusic" destination="V2n-SX-wDW" id="2Hx-rK-3Vv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="137.94642857142856"/>
         </scene>
         <!--Search-->
         <scene sceneID="4HL-rp-Dxy">
@@ -101,7 +119,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5y-yy-HFk">
                                         <rect key="frame" x="20" y="567" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Play this song">
@@ -123,14 +141,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd3-xH-hj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="6GQ-MY-1Tq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1771.0144927536232" y="137.94642857142856"/>
+            <point key="canvasLocation" x="2681.1594202898555" y="137.94642857142856"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="JKQ-XZ-yzx">
             <objects>
                 <viewController id="ccK-5j-9xi" customClass="DetailViewController" customModule="NC2Day4Collection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bmc-ap-ucb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_room" translatesAutoresizingMaskIntoConstraints="NO" id="oW6-ZJ-S5Q">
@@ -147,13 +165,45 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="j5L-Xc-Wdl"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KTR-XO-XMh" appends="YES" id="SL4-Hv-GjC"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="q45-gg-z4d"/>
+                    <connections>
+                        <outlet property="coverImage" destination="oW6-ZJ-S5Q" id="WaF-g0-Qtb"/>
+                        <outlet property="musicLabel" destination="sTz-ic-13p" id="fgG-Lj-Cn4"/>
+                        <outlet property="swipeDown" destination="KTR-XO-XMh" id="YdC-Uy-EGo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WA1-r9-zJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="KTR-XO-XMh">
+                    <connections>
+                        <action selector="handleSwipe:" destination="ccK-5j-9xi" id="auQ-La-sB3"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="821.65178571428567"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dC2-r2-txC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9vp-2t-jRF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bId-lp-Cz2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dNi-yw-20j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SpB-HA-1bv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>
