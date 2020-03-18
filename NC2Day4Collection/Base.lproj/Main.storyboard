@@ -15,9 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_room" translatesAutoresizingMaskIntoConstraints="NO" id="NCs-Sp-d5Q">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_room" translatesAutoresizingMaskIntoConstraints="NO" id="NCs-Sp-d5Q">
                                 <rect key="frame" x="0.0" y="140" width="414" height="586"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4dl-sQ-5G0" appends="YES" id="M9F-a9-dOa"/>
+                                    <outletCollection property="gestureRecognizers" destination="2Lw-20-CFW" appends="YES" id="rUl-Mn-dUF"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2n-SX-wDW">
                                 <rect key="frame" x="20" y="751" width="276" height="21"/>
@@ -61,19 +66,31 @@
                     <navigationItem key="navigationItem" title="Music Player" id="h3g-c6-1iA">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="dCR-gX-PG7">
                             <connections>
-                                <segue destination="oq3-YH-39V" kind="show" id="rek-Hb-Cuf"/>
+                                <segue destination="oq3-YH-39V" kind="show" identifier="searchSegue" id="rek-Hb-Cuf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftSwipe" destination="4dl-sQ-5G0" id="PjK-N0-yHs"/>
                         <outlet property="libraryButton" destination="Hbu-DZ-BuF" id="uvk-g5-lYO"/>
                         <outlet property="musicCover" destination="NCs-Sp-d5Q" id="eeT-4o-e6h"/>
                         <outlet property="playListMusic" destination="GPv-Vb-cNB" id="hxF-OB-zDt"/>
+                        <outlet property="rightSwipe" destination="2Lw-20-CFW" id="N8Y-mV-l2l"/>
                         <outlet property="shuffleButton" destination="3oC-Pq-wFW" id="7xE-Wo-D36"/>
                         <outlet property="titleMusic" destination="V2n-SX-wDW" id="2Hx-rK-3Vv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="4dl-sQ-5G0">
+                    <connections>
+                        <action selector="swipeRandom:" destination="BYZ-38-t0r" id="gdL-Ic-Dqk"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="2Lw-20-CFW">
+                    <connections>
+                        <action selector="swipeRandom:" destination="BYZ-38-t0r" id="zKD-FZ-mtS"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="137.94642857142856"/>
         </scene>
@@ -89,6 +106,9 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oq3-YH-39V" id="oDq-m7-pzH"/>
+                                </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tz8-Nb-5i8">
                                 <rect key="frame" x="0.0" y="184" width="414" height="696"/>
@@ -119,7 +139,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5y-yy-HFk">
                                         <rect key="frame" x="20" y="567" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Play this song">
@@ -137,6 +157,14 @@
                         <viewLayoutGuide key="safeArea" id="Ua2-VJ-E3r"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="PCK-0R-A3v"/>
+                    <connections>
+                        <outlet property="playButton" destination="q5y-yy-HFk" id="MpT-19-Ro0"/>
+                        <outlet property="searchAuthor" destination="eR5-5O-PYi" id="F0j-9e-OgP"/>
+                        <outlet property="searchDuration" destination="4pC-rg-tfz" id="zXw-iP-PXV"/>
+                        <outlet property="searchField" destination="QHB-GN-aTs" id="OPv-Y0-afd"/>
+                        <outlet property="searchImage" destination="1jc-dw-2hc" id="6YE-0f-3f9"/>
+                        <outlet property="searchTitle" destination="FaA-9G-jtx" id="m3B-5q-LhU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd3-xH-hj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="6GQ-MY-1Tq" userLabel="Exit" sceneMemberID="exit"/>
@@ -179,13 +207,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WA1-r9-zJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="down" id="KTR-XO-XMh">
+                <swipeGestureRecognizer direction="left" id="KTR-XO-XMh">
                     <connections>
                         <action selector="handleSwipe:" destination="ccK-5j-9xi" id="auQ-La-sB3"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="821.65178571428567"/>
+            <point key="canvasLocation" x="1958" y="860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dC2-r2-txC">
