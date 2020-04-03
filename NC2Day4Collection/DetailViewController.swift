@@ -27,7 +27,8 @@ class DetailViewController: UIViewController {
         if let temp = sendImage {
             coverImage.image = temp
         }
-        musicLabel.text = "\(titleMusic) \n Music Duration : \(durationMusic) minute"
+//        musicLabel.text = "\(titleMusic) \n Music Duration : \(durationMusic) minute"
+        musicLabel.text = "\(titleMusic) \n Total Listen : \(durationMusic) persons"
     }
     
     @IBAction func handleSwipe(_ sender: UISwipeGestureRecognizer) {
@@ -38,6 +39,5 @@ class DetailViewController: UIViewController {
             break
         }
     }
-    
 
 }
